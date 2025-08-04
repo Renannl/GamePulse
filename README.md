@@ -21,7 +21,7 @@ A aplicação exibe uma lista de jogos populares da API [RAWG](https://rawg.io/a
   <img src="https://user-images.githubusercontent.com/00000000/demo-gamelist.gif" alt="Demonstração do projeto" width="600px">
 </p>
 
-*(adicione aqui um GIF ou print do seu projeto rodando)*
+![alt text](image.png)
 
 ---
 
@@ -81,7 +81,7 @@ npm start
 
 ## 🌐 Demo online
 
-🔗 [Clique aqui para acessar o projeto](https://game-pulse-delta.vercel.app/) *(se tiver feito o deploy)*
+🔗 [Clique aqui para acessar o projeto](https://game-pulse-delta.vercel.app/)
 
 ---
 
