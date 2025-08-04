@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./AddGameForm.css"
 
 function AddGameForm({ onSave, onCancel }) {
 const [formData, setFormData] = useState({
