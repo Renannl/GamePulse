@@ -1,5 +1,5 @@
-body{
-    justify-content: center;
+body {
+  justify-content: center;
 }
 
 .GameCard {
@@ -39,11 +39,37 @@ body{
   color: #ccc;
 }
 
+#addGame {
+  align-items: center;
+  background-color: rgba(29, 167, 41, 0.712)
+}
+
+.listOfGameCards {
+  display: block;
+  text-align: center;
+}
+
 @media (min-width: 750px) {
-    .listOfGameCards{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    }
+  .listOfGameCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  }
+
+  #addGame {
+    flex-basis: 15%;
+    margin-top: 15px;
+    height: 80px;
+    font-size: 2rem;
+    background-color: rgba(29, 167, 41, 0.9);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #addGame:hover {
+    background-color: rgba(29, 167, 41, 1);
+  }
 }

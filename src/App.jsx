@@ -6,6 +6,7 @@ import AddGameForm from "./components/AddGameForm";
 function App() {
   const [games, setGames] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function fetchGames() {
@@ -36,11 +37,16 @@ function App() {
     setIsAdding(false);
   };
 
+  const filteredGames = games.filter((game) =>
+    game.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="paginicial">
-      <Header />
+      <Header onSearch={setSearchTerm} />
+
       <div className="listOfGameCards">
-        {games.map((game) => (
+        {filteredGames.map((game) => (
           <GameCard
             key={game.id}
             title={game.name}
@@ -56,7 +62,7 @@ function App() {
             onCancel={() => setIsAdding(false)}
           />
         ) : (
-          <button onClick={() => setIsAdding(true)}>Add Game</button>
+          <button id="addGame" onClick={() => setIsAdding(true)}>+</button>
         )}
       </div>
     </div>

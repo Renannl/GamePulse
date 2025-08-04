@@ -88,7 +88,7 @@ npm start
 ## 📌 Próximos passos
 
 - 🔍 Implementar busca por nome de jogo.  
-- 🎨 Melhorar o design com animações e responsividade mobile.  
+- 🎨 Melhorar o design com animações. 
 - ⭐ Criar sistema de favoritos (salvar jogos no LocalStorage).  
 
 ---
