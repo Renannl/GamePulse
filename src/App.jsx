@@ -1,47 +1,64 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import GameCard from "./components/GameCard";
+import AddGameForm from "./components/AddGameForm";
 
 function App() {
   const [games, setGames] = useState([]);
+  const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {
-    async function requestApi() {
-      const requestApi = await fetch("https://api.rawg.io/api/games?key=fa5a3a2b904f7db88e1888c61e3f3e&page_size=10");
-      const response = await requestApi.json();
-    
-      // Ajuste para usar a estrutura correta da RAWG API
-      const topGames = response.results.map((game) => ({
-        id: game.id,
-        name: game.name,
-        players: game.ratings_count, // usando quantidade de avaliações como "players"
-        image: game.background_image // capa do jogo
-      }));
+    async function fetchGames() {
+      try {
+        const response = await fetch(
+          "https://api.rawg.io/api/games?key=90fa5a3a2b904f7db88e1888c61e3f3e&page_size=30"
+        );
+        const data = await response.json();
 
-      setGames(topGames);
+        const topGames = data.results.map((game) => ({
+          id: game.id,
+          name: game.name,
+          players: game.ratings_count,
+          image: game.background_image,
+          genre: game.genres[0]?.name || "No genre",
+        }));
+        setGames(topGames);
+      } catch (error) {
+        console.error("Failed to fetch games:", error);
+      }
     }
-    requestApi();
+
+    fetchGames();
   }, []);
 
-  function addGame() {
-    const outrojogo = {id: Date.now(), name: "cabraozin", players: 34};
-    setGames([...games, outrojogo]);
-  }
+  const handleSaveGame = (newGame) => {
+    setGames((prevGames) => [...prevGames, newGame]);
+    setIsAdding(false);
+  };
 
   return (
     <div className="paginicial">
       <Header />
       <div className="listOfGameCards">
         {games.map((game) => (
-          <GameCard 
+          <GameCard
             key={game.id}
             title={game.name}
             players={game.players}
             bg={game.image}
+            genre={game.genre}
           />
         ))}
-        <button onClick={addGame}>Adicionar Jogo</button>
-      </div>   
+
+        {isAdding ? (
+          <AddGameForm
+            onSave={handleSaveGame}
+            onCancel={() => setIsAdding(false)}
+          />
+        ) : (
+          <button onClick={() => setIsAdding(true)}>Add Game</button>
+        )}
+      </div>
     </div>
   );
 }

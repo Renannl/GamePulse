@@ -12,6 +12,7 @@ body{
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   transition: transform 0.2s ease-in-out;
   justify-content: center;
+  cursor: pointer;
 }
 
 .GameCard:hover {
@@ -43,5 +44,6 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     }
 }
